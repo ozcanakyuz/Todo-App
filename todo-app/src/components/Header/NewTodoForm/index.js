@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import validationSchema from "./validations";
 
@@ -8,14 +8,15 @@ function NewTodoForm() {
       initialValues={{
         text: "",
       }}
-      onSubmit={async (values) => {
-        await new Promise((r) => setTimeout(r, 500));
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={(values, bag) => {
+        console.log(values);
+
+        bag.resetForm();
       }}
       validationSchema={validationSchema}
     >
       <Form>
-        <input
+        <Field
           className="new-todo"
           placeholder="What needs to be done?"
           autoFocus
