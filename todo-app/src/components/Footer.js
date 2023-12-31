@@ -6,7 +6,7 @@ export default class Footer extends Component {
       <footer className="info">
         <p>Click to edit a todo</p>
         <p>
-          Created by <a href="https://d12n.me/">Dmitry Sharabin</a>
+          Edited by <a href="https://www.instagram.com/ozcanakyuz_/">Ozcan Akyuz</a>
         </p>
         <p>
           Part of <a href="http://todomvc.com">TodoMVC</a>

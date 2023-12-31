@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from "uuid";
 const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const [filter, setFilter] = useState('all') 
+  const [filter, setFilter] = useState("all");
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: "Learn React-Deneme",
+      text: "Learn React-Tutorial",
       completed: true,
     },
   ]);
@@ -26,6 +26,20 @@ export const TodoProvider = ({ children }) => {
     setTodos(cloned_todos);
   };
 
+  const toggleAllTodo = () => {
+    setTodos((prevTodos) => {
+      const allCompleted = prevTodos.every((todo) => todo.completed);
+      
+      const updatedTodos = prevTodos.map((todo) => ({
+        ...todo,
+        completed: !allCompleted,
+      }));
+  
+      return updatedTodos;
+    });
+  };
+  
+
   const destroyTodo = (id) => {
     const cloned_todos = [...todos];
 
@@ -33,7 +47,6 @@ export const TodoProvider = ({ children }) => {
     cloned_todos.splice(itemIndex, 1);
 
     setTodos(cloned_todos);
-
   };
 
   const values = {
@@ -42,8 +55,9 @@ export const TodoProvider = ({ children }) => {
     addTodo,
     toggleTodo,
     destroyTodo,
-    filter, 
+    filter,
     setFilter,
+    toggleAllTodo,
   };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;

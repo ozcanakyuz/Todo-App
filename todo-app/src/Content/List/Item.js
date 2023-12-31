@@ -16,8 +16,6 @@ function Item({ todo }) {
           type="checkbox"
           checked={todo.completed}
           onChange={() => onChange(todo.id)}
-          // checked={checkedValue}
-          // onChange={handleCheckboxChange}
         />
         <label>{todo.text}</label>
         <button className="destroy" onClick={() => onDestroy(todo.id)}></button>

@@ -5,47 +5,58 @@ function ContentFooter() {
   const { todos, setTodos, filter, setFilter } = useTodo();
 
   const clearCompleted = () => {
+    setTodos((prev) => prev.filter((todo) => !todo.completed));
+  };
 
-    setTodos((prev) => prev.filter(todo => !todo.completed));
-  }
+  const hasCompletedTodos = todos.some((todo) => todo.completed);
+
+  const activeTodosCount = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <footer className="footer">
-      <span className="todo-count">
-        <strong>{todos.length}</strong> item{todos.length > 1 && "s"} left
-      </span>
+    <footer className="footer" style={{ display: todos.length === 0 ? 'none' : 'block' }}>
+      {activeTodosCount > 0 && (
+        <span className="todo-count">
+          <strong>{activeTodosCount}</strong> item
+          {activeTodosCount !== 1 && "s"} left
+        </span>
+      )}
 
       <ul className="filters">
         <li>
           <a
             href="#/"
             onClick={() => setFilter("all")}
-            className={filter === "all" ? "selected" : ""}
+            className={filter === "all" && todos.length > 0 ? "selected" : ""}
           >
-            All
+            {todos.length > 0 && "All"}
           </a>
         </li>
         <li>
           <a
             href="#/"
             onClick={() => setFilter("active")}
-            className={filter === "active" ? "selected" : ""}
+            className={
+              filter === "active" && todos.length > 0 ? "selected" : ""
+            }
           >
-            Active
+            {todos.length > 0 && "Active"}
           </a>
         </li>
         <li>
           <a
             href="#/"
             onClick={() => setFilter("completed")}
-            className={filter === "completed" ? "selected" : ""}
+            className={
+              filter === "completed" && todos.length > 0 ? "selected" : ""
+            }
           >
-            Completed
+            {todos.length > 0 && "Completed"}
           </a>
         </li>
       </ul>
-
-      <button className="clear-completed" onClick={clearCompleted}>Clear completed</button>
+      <button className="clear-completed" onClick={clearCompleted}>
+        {hasCompletedTodos && "Clear completed"}
+      </button>
     </footer>
   );
 }
