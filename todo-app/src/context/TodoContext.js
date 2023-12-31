@@ -9,16 +9,16 @@ export const TodoProvider = ({ children }) => {
       text: "Learn React-Deneme",
       completed: false,
     },
-    {
-        id: 2,
-        text: "Learn React-Deneme2",
-        completed: true,
-      },
-      {
-        id: 3,
-        text: "Learn React-Deneme3",
-        completed: false,
-      },
+    // {
+    //     id: 2,
+    //     text: "Learn React-Deneme2",
+    //     completed: true,
+    //   },
+    //   {
+    //     id: 3,
+    //     text: "Learn React-Deneme3",
+    //     completed: false,
+    //   },
   ]);
 
   const values = {
