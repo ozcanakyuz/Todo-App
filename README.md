@@ -1,1 +1,2 @@
-<img src="https://hizliresim.com/dumuko3" alt="todo-app">
+<img src="https://i.hizliresim.com/dumuko3.png" alt="todo-app">
+
